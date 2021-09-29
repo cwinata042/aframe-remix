@@ -1,0 +1,612 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Aframe Remix</title>
+    <meta name="description" content="Aframe Remix">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Assets -->
+      <a-assets>
+        <!-- Object Model: Soft Back Pack by Kurky -->
+        <a-asset-item
+          id="backpack-o"
+          src="assets/backpack/backpack.obj">
+        </a-asset-item>
+
+        <img id="carpet2" src="assets/rug.jpg">
+        <img id="clock" src="assets/clock.jpg">
+        <img id="paintingH1" src="assets/paintingH1.jpg">
+        <img id="paintingV1" src="assets/paintingV1.jpg">
+      </a-assets>
+      
+      <!-- Camera -->
+      <a-entity id="rig" position="-2.0 2.5 0" rotation="-5 -35 0">
+        <a-entity id="camera" camera look-controls></a-entity>
+      </a-entity>
+      
+      <!-- Walls + Roof-->
+      <a-entity
+        id="north wall"
+        geometry="primitive: box; width: 16; depth: 0.2; height: 5"
+        position="2.897 2.5 -7.91675"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <a-entity
+        id="east wallR"
+        geometry="primitive: box; width: 6; depth: 0.5; height: 5"
+        position="4.25056 2.4989 -1"
+        rotation="0 -90 0"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <a-entity
+        id="east wallL"
+        geometry="primitive: box; width: 1; depth: 0.5; height: 5"
+        position="4.25794 2.5 -7.50015"
+        rotation="0 -90 0"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <a-entity
+        id="east wallT"
+        geometry="primitive: box; width: 3; depth: 0.5; height: 0.6"
+        position="4.25056 4.50075 -5.5"
+        rotation="0 -90 0"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <a-entity
+        id="west wall"
+        geometry="primitive: box; width: 10; depth: 0.2; height: 5"
+        position="-5 2.5 -3"
+        rotation="0 -90 0"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <a-entity
+        id="east outer wall"
+        geometry="primitive: box; width: 10; depth: 0.2; height: 5"
+        position="10.794 2.5 -3"
+        rotation="0 -90 0"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <a-entity
+        id="roof"
+        geometry="primitive: box; width: 16; depth: 0.2; height: 10"
+        position="2.897 4.89939 -3"
+        rotation="-90 0 0"
+        material="color: #e2cad6">
+      </a-entity>
+
+      <!-- Right Table -->
+      <a-entity
+        id="tableRT"
+        geometry="width: 5; depth: 1.2; height: 0.1"
+        position="3.40233 0.95407 -1.16615"
+        rotation="0 -90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRB"
+        geometry="width: 5; depth: 1.2; height: 0.1"
+        position="3.40233 0.05041 -1.16615"
+        rotation="0 -90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRBK"
+        geometry="width: 5; height: 0.1"
+        position="3.94995 0.50056 -1.16615"
+        rotation="90 90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRR"
+        geometry="width: 1.2; height: 0.1"
+        position="3.40233 0.49671 1.2842"
+        rotation="90 0 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRL"
+        geometry="width: 1.2; height: 0.1"
+        position="3.40233 0.50296 -3.61756"
+        rotation="90 0 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRS1"
+        geometry="width: 1.2; height: 0.1"
+        position="3.40233 0.49671 -0.950"
+        rotation="90 0 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRS2"
+        geometry="width: 1.2; height: 0.1"
+        position="3.40233 0.497 0.11968"
+        rotation="90 0 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRC1"
+        geometry="width: 0.990; height: 0.1"
+        position="2.85229 0.494 -0.415"
+        rotation="90 90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRC2"
+        geometry="width: 1.1; height: 0.1; depth: 0.5"
+        position="2.85229 0.25561 0.70384"
+        rotation="90 90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="tableRC3"
+        geometry="width: 1.09; height: 0.04; depth: 1.2"
+        position="3.40536 0.4982 0.704"
+        rotation="0 90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <!-- Right Table Boxes -->
+      <a-entity
+        id="boxRB1"
+        geometry="width: 0.66; depth: 0.58; height: 0.18"
+        position="3.40233 0.19147 -3.09139"
+        rotation="0 -90 0"
+        material="color: #e6e2db">
+      </a-entity>
+
+      <a-entity
+        id="boxRB2"
+        geometry="width: 0.28; depth: 0.64; height: 0.13"
+        position="3.38301 0.16797 -2.49249"
+        rotation="0 -90 0"
+        material="color: #e6e2db">
+      </a-entity>
+
+      <a-entity
+        id="boxRB3"
+        geometry="width: 0.47; depth: 0.67; height: 0.29"
+        position="3.36244 0.24471 -2"
+        rotation="0 -90 0"
+        material="color: #e6e2db">
+      </a-entity>
+
+      <a-entity
+        id="boxRB4"
+        geometry="width: 0.44; depth: 0.59; height: 0.3"
+        position="3.40233 0.53574 -2"
+        rotation="0 -90 0"
+        material="color: #e6e2db">
+      </a-entity>
+
+      <a-entity
+        id="boxRB5"
+        geometry="width: 0.38; depth: 0.64; height: 0.13"
+        position="3.38301 0.16797 -1.46942"
+        rotation="0 -90 0"
+        material="color: #464139">
+      </a-entity>
+
+      <!-- Left Shelf-->
+      <a-entity
+        id="bookshelfLB"
+        geometry="primitive: box; width: 2.5; height: 2"
+        position="0 1.00903 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLTL"
+        geometry="width: 0.06; height: 2.31"
+        position="-1.223 3.16208 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLTR"
+        geometry="width: 0.06; height: 2.31"
+        position="1.21835 3.162 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLTT"
+        geometry="width: 2.5; height: 0.06"
+        position="0 4.29299 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLTM1"
+        geometry="width: 0.06; height: 2.31"
+        position="0 3.16505 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLM2"
+        geometry="width: 2.5; height: 0.06"
+        position="0 3.02684 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLM3"
+        geometry="width: 1.25; height: 0.06"
+        position="-0.62413 3.65147 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLM4"
+        geometry="width: 1.25; height: 0.06"
+        position="0.61188 2.48533 -7.187"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfLTB"
+        geometry="width: 2.5; height: 2.31; depth: 0.06"
+        position="0 3.17338 -7.65656"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <!-- Left Shelf Boxes -->
+
+      <!-- Left Shelf Books -->
+      <a-entity
+        id="book1"
+        geometry="width: 0.06; height: 0.44"
+        position="-1.143 3.898 -7.187"
+        material="color: #1c1917">
+      </a-entity>
+
+      <a-entity
+        id="book2"
+        geometry="width: 0.310; height: 0.380"
+        position="-0.953 3.872 -7.187"
+        material="color: #6c5241">
+      </a-entity>
+
+      <a-entity
+        id="book3"
+        geometry="width: 0.12; height: 0.44"
+        position="-0.69839 3.898 -7.187"
+        material="color: #f3efec">
+      </a-entity>
+
+      <a-entity
+        id="book4"
+        geometry="width: 0.12; height: 0.4"
+        position="-0.60646 3.88195 -7.187"
+        material="color: #f3efaf">
+      </a-entity>
+
+      <a-entity
+        id="book5"
+        geometry="width: 0.09; height: 0.44"
+        position="-0.31432 3.72516 -7.187"
+        material="color: #f3efec"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="book6"
+        geometry="width: 0.09; height: 0.44"
+        position="-0.314 3.81123 -7.187"
+        material="color: #12100e"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="book7"
+        geometry="width: 0.09; height: 0.44"
+        position="-0.314 3.898 -7.187"
+        material="color: #f3efec"
+        rotation="0 0 90">
+      </a-entity>
+
+      <!-- Couch -->
+      <a-entity
+        id="couchB1"
+        geometry="width: 3.45; depth: 2; height: 0.3"
+        position="-3.04412 0.12997 -6.76481"
+        material="color: #f3ece2">
+      </a-entity>
+
+      <a-entity
+        id="couchB2"
+        geometry="primitive: box; width: 3; depth: 2; height: 0.3"
+        position="-3.83188 0.13901 -4.2647"
+        material="color: #f3ece2"
+        rotation="0 90 0">
+      </a-entity>
+
+      <a-entity id="couchC1"
+        geometry="width: 3; depth: 1.7; height: 0.5"
+        position="-3.06471 0.516 -6.76481"
+        material="color: #f3ece2">
+      </a-entity>
+
+      <a-entity id="couchC2"
+        geometry="width: 3; depth: 1.7; height: 0.5"
+        position="-3.77451 0.516 -4.42018"
+        material="color: #f3ece2"
+        rotation="0 90 0">
+      </a-entity>
+
+      <a-entity
+        id="couchS1"
+        geometry="width: 3; depth: 1.7; height: 0.3"
+        position="-3.06471 0.88662 -7.61403"
+        material="color: #f3ece2"
+        rotation="90 0 0">
+      </a-entity>
+
+      <a-entity id="couchS2"
+        geometry="width: 2; height: 0.25"
+        position="-1.4397 0.7866 -6.75846"
+        material="color: #f3ece2"
+        rotation="90 90 0">
+      </a-entity>
+
+      <a-entity
+        id="couchS3"
+        geometry="width: 4.75; depth: 1.7; height: 0.3"
+        position="-4.67804 0.88662 -5.38077"
+        material="color: #f3ece2"
+        rotation="90 90 0">
+      </a-entity>
+
+      <a-entity
+        id="couchS4"
+        geometry="width: 2; height: 0.25"
+        position="-3.82784 0.7842 -2.88442"
+        material="color: #f3ece2"
+        rotation="90 0 0">
+      </a-entity>
+
+      <!-- Other Furniture -->
+      <a-entity
+        id="tableL"
+        geometry="width: 3; depth: 2.29; height: 1.35"
+        position="-3.58382 0.67175 -1.26739"
+        rotation="0 -90 0"
+        material="color: #b38e7a">
+      </a-entity>
+      
+      <a-entity
+        id="tv"
+        geometry="primitive: box; width: 3; depth: 0.1; height: 1.5;"
+        position="3.95141 1.98281 -1.5"
+        rotation="0 -90 0"
+        material="color: #292929">
+      </a-entity>
+
+      <a-entity
+        id="game console"
+        geometry="width: 0.18; depth: 0.58; height: 0.59"
+        position="3.40233 1.29852 0.054"
+        rotation="0 -90 0"
+        material="color: #292927">
+      </a-entity>
+
+      <a-entity
+        id="shelf1"
+        geometry="primitive: box; width: 4; depth: 1.2; height: 0.1;"
+        position="3.402 4 -1.5"
+        rotation="0 -90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="shelf2"
+        geometry="primitive: box; width: 4; depth: 1.2; height: 0.1;"
+        position="3.402 3.5 -1.5"
+        rotation="0 -90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="shelf3"
+        geometry="primitive: box; width: 3; depth: 1.2; height: 0.1;"
+        position="3.402 3 -1"
+        rotation="0 -90 0"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="bookshelfR"
+        geometry="width: 2.3; height: 2.31; depth: 0.8"
+        position="5.8332 1.15045 -7.4148"
+        material="color: #b38e7a">
+      </a-entity>
+
+      <a-entity
+        id="carpet1"
+        geometry="primitive: plane; width: 1.5; height: 2.5;"
+        position="3.061 0.02451 -5.511"
+        rotation="-90 0 0"
+        material="color: #e5d5c3">
+      </a-entity>
+
+      <a-entity
+        id="carpet2"
+        geometry="primitive: box; width: 3.7; height: 5.12; depth: 0.1"
+        position="-0.70098 0.00839 -2.17938"
+        rotation="-90 0 0"
+        material="src:#carpet2">
+      </a-entity>
+
+      <!-- Decor -->
+      <a-entity
+        id="phone"
+        geometry="width: 0.24; height: 0.47; depth: 0.03"
+        position="-2.8504 1.35844 -2.34602"
+        material="color: #443f31"
+        rotation="90 0 0">
+      </a-entity>
+
+      <a-entity
+        id="hanger1"
+        geometry="width: 0.21; height: 1.5; depth: 0.06"
+        position="3.05784 3.17223 -7.78498"
+        material="color: #b79e80"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="hanger2"
+        geometry="width: 0.21; height: 1.5; depth: 0.06"
+        position="7.5909 3.17223 -7.78498"
+        material="color: #b79e80"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="clock"
+        geometry="width: 1.25; height: 1.25; depth: 0.06"
+        position="3.09739 3.96236 -7.78498"
+        material="src:#clock"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        obj-model="obj:#backpack-o"
+        position="3.05947 2.29664 -7.43041"
+        scale="0.015 0.015 0.015"
+        rotation="0 90 0"
+        material="color: #7e3a3a">
+      </a-entity>
+
+      <!-- Paintings -->
+      <a-entity
+        id="paintingH1"
+        geometry="width: 1.23; height: 0.82; depth: 0.06"
+        position="2.64127 0.42178 -7.22195"
+        material="src:#paintingH1"
+        rotation="-25 0 0">
+      </a-entity>
+
+      <a-entity
+        id="paintingV1"
+        geometry="width: 1.57; height: 0.9; depth: 0.06"
+        position="1.94256 0.76025 -7.515"
+        material="src:#paintingV1"
+        rotation="-20 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingV2"
+        geometry="width: 1.3; height: 0.75; depth: 0.06"
+        position="-1.989 3.963 -7.78498"
+        material="color: #b79e80"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH2"
+        geometry="width: 1.3; height: 1.4; depth: 0.06"
+        position="-3.169 3.963 -7.785"
+        material="color: #6c5942"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH3"
+        geometry="width: 0.5; height: 0.59; depth: 0.06"
+        position="-4.34327 4.26143 -7.785"
+        material="color: #6c5942"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH4"
+        geometry="width: 0.5; height: 0.59; depth: 0.06"
+        position="-4.34327 3.66307 -7.785"
+        material="color: #d9abbd"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH5"
+        geometry="width: 0.84; height: 1.4; depth: 0.06"
+        position="-3.83502 2.73909 -7.785"
+        material="color: #fdfdfc"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingV3"
+        geometry="width: 0.94; height: 0.5; depth: 0.06"
+        position="-1.989 2.65982 -7.78498"
+        material="color: #ffffff"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH6"
+        geometry="width: 0.52; height: 0.6; depth: 0.06"
+        position="-2.6309 2.9485 -7.78498"
+        material="color: #c9987e"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH7"
+        geometry="width: 0.2; height: 0.2; depth: 0.06"
+        position="-1.989 1.90314 -7.78498"
+        material="color: #443f31"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingH8"
+        geometry="width: 0.2; height: 0.2; depth: 0.06"
+        position="-1.63977 1.90315 -7.78498"
+        material="color: #443f31"
+        rotation="0 0 90">
+      </a-entity>
+
+      <a-entity
+        id="paintingV4"
+        geometry="width: 0.62; depth: 0.06"
+        position="3.97562 2.76539 -7.37466"
+        material="color: #6f5f4a"
+        rotation="0 90 0">
+      </a-entity>
+
+      <a-entity
+        id="paintingV5"
+        geometry="width: 0.89; height: 0.78; depth: 0.06"
+        position="5.75315 3.40712 -7.84121"
+        material="color: #ffffff"
+        rotation="0 0 90">
+      </a-entity>
+
+      <!-- Lighting, Plane -->
+      <a-plane position="2.897 0 -3" rotation="-90 0 0" width="9" height="8" color="#cfab9b" material="" geometry="width: 16; height: 10"></a-plane>
+      <a-entity light="color: #e1c7a8; intensity: 0.86; type: spot; castShadow: true" position="-9.74535 3.11553 -5.24645" rotation="0 -90 0" visible=""></a-entity>
+      <a-entity light="color: #e1c7a8; intensity: 0.45; type: ambient; castShadow: true" position="1.00335 -1.03896 -6.72238" rotation="0 -90 0" visible=""></a-entity>
+      <a-sky color="#dbd5d5"></a-sky>
+    </a-scene>
+  </body>
+</html>
